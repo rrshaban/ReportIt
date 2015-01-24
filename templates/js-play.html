@@ -4,6 +4,8 @@
 <html>
 <head>
   <title></title>
+
+
   <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   
@@ -22,7 +24,8 @@
       el: '#map',
       lat: 31.9333,
       lng: 35.9333,
-      disableDefaultUI: true
+      disableDefaultUI: true,
+      zoom: 5
     });
 
 
@@ -44,24 +47,15 @@
 
     {% endif %}
 
-
-
     {% if city or country %}
 
     GMaps.geocode({
-
       {% if city and country %}
-
-      address: $('{{city}}, {{country}}').val(),
-
+      address: '{{city}}, {{country}}',
       {% elif city %}
-
-      address: $('{{city}}').val(),
-
+      address: '{{city}}',
       {% else %} {# country #}
-
-      address: $('{{country}}').val(),
-
+      address: '{{country}}',
       {% endif %}
 
 
@@ -69,10 +63,13 @@
         if (status == 'OK') {
           var latlng = results[0].geometry.location;
           map.setCenter(latlng.lat(), latlng.lng());
-          map.addMarker({
-            lat: latlng.lat(),
-            lng: latlng.lng()
-          });
+          {% if city %}
+          map.setZoom(9);
+          {% endif %}
+          // map.addMarker({
+          //   lat: latlng.lat(),
+          //   lng: latlng.lng()
+          // });
         }
       }
     });

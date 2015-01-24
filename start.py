@@ -20,7 +20,9 @@ def login():
 
 @app.route('/working')
 def working():
-	return render_template('js-play.html', city='Paris')
+	return render_template('js-play.html', 
+		city='Accra'
+		)
 
 
 @app.route('/submit', methods = ['GET', 'POST'])
@@ -48,8 +50,16 @@ def submit():
 
 @app.route('/country/<country>')
 def print_country_region(country):
-	return render_template('hello.html', name = country)
+	return render_template('js-play.html', 
+		country=country
+		)
+	# return render_template('hello.html', name = country)
 
+@app.route('/city/<city>')
+def print_city(city):
+	return render_template('js-play.html', 
+		city=city
+		)
 
 @app.route('/p/<int:post_id>')
 def show_post(post_id):
