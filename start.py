@@ -20,9 +20,7 @@ def login():
 
 @app.route('/working')
 def working():
-	return render_template('js-play.html', 
-		city='Accra'
-		)
+	return render_template('js-play.html') 
 
 
 @app.route('/submit', methods = ['GET', 'POST'])
@@ -44,6 +42,13 @@ def submit():
 
 	else:
 		return render_template('form_submit.html')
+
+@app.route('/submit/<lat>/<lon>')
+def submit_redirect(lat, lon):
+
+	return render_template('form_submit.html',
+			lat = lat,
+			lon = lon)
 
 
 
