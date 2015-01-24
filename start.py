@@ -1,6 +1,6 @@
 import sqlite3
 from flask import *
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 appname = 'ReportIt'
 
