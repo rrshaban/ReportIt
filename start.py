@@ -49,7 +49,7 @@ def working():
 
 @app.route('/country/<country>')
 def print_country_region(country):
-	return 'Country: %s' % country
+	return render_template('hello.html', name = country)
 
 
 @app.route('/p/<int:post_id>')
