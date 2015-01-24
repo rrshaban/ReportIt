@@ -16,7 +16,8 @@ workin = '''<!DOCTYPE html>
       function initialize() {
         var mapOptions = {
           center: { lat: 31.9333, lng: 35.9333},
-          zoom: 8
+          zoom: 8,
+          disableDefaultUI: true
         };
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
@@ -66,5 +67,5 @@ def show_post(post_id):
 
 if __name__ == '__main__':
 	app.debug = True
-	app.logger.warning('A warning occurred (%d apples)', 42)
+	# app.logger.warning('A warning occurred (%d apples)', 42)
 	app.run()
