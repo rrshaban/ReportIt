@@ -65,6 +65,7 @@ def show_post(post_id):
 # with app.test_request_context():
 # 	print url_for('home')
 # 	print url_for('login', next = '/')
+# 	print url_for('print_country_region', country = 'Jordan')
 
 if __name__ == '__main__':
 	app.debug = True
