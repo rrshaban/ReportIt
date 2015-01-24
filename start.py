@@ -1,39 +1,14 @@
-import sqlite3
+import sqlite3 as lite
 from flask import *
 app = Flask(__name__, template_folder='templates')
 
 appname = 'ReportIt'
 
-workin = '''<!DOCTYPE html>
-<html>
-  <head>
-    <style type="text/css">
-      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
-    </style>
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgXKvcA_wB6l60kWyuyNWeYTP2zrVr6oo">
-    </script>
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: { lat: 31.9333, lng: 35.9333},
-          zoom: 8,
-          disableDefaultUI: true
-        };
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-  </head>
-  <body>
-<div id="map-canvas" style="width:500px;height:380px;"></div>
-  </body>
-</html>'''
-
 @app.route('/')
 def home():
 	return 'Welcome to %s!' % appname
+
+
 
 @app.route('/about')
 def about():
@@ -45,7 +20,7 @@ def login():
 
 @app.route('/working')
 def working():
-	return workin
+	return render_template('js-play.html')
 
 
 @app.route('/submit', methods = ['GET', 'POST'])
