@@ -1,3 +1,4 @@
+import sqlite3
 from flask import *
 app = Flask(__name__)
 
@@ -26,7 +27,7 @@ workin = '''<!DOCTYPE html>
     </script>
   </head>
   <body>
-<div id="map-canvas"></div>
+<div id="map-canvas" style="width:500px;height:380px;"></div>
   </body>
 </html>'''
 
