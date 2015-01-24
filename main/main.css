@@ -1,0 +1,20 @@
+/**
+ * Created by tyy on 1/23/15.
+ */
+
+#main-container {
+    position: relative;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(30, 30, 30, 0.9);
+}
+
+#header ul li{
+    display: inline-block;
+    color: #fff;
+
+}
