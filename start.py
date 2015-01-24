@@ -48,18 +48,26 @@ def working():
 	return workin
 
 
-@app.route('/submit', methods = ['POST'])
+@app.route('/submit', methods = ['GET', 'POST'])
 def submit():
 	if request.method == 'POST':
-		name = request.form['yourname']
-		email= request.form['youremail']
-		return render_template('form_action.html', 
-					name=name, 
-					email=email)
 
-@app.route('/form')
-def form():
-	return render_template('form_submit.html')
+		title = request.form['title']
+		city = request.form['city']
+		category1 = request.form['category1']
+		category2 = request.form['category2']
+		description = request.form['description']
+
+		return render_template('form_action.html', 
+					title=title, 
+					city=city,
+					category1=category1,
+					category2=category2,
+					description=description)
+
+	else:
+		return render_template('form_submit.html')
+
 
 
 

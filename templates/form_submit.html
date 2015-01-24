@@ -10,10 +10,24 @@
             </div>
             <div id="content">
                 <form method="post" action="{{ url_for('submit') }}">
-                  <label for="yourname">Please enter your name:</label>
-                  <input type="text" name="yourname" /><br />
-                  <label for="youremail">Please enter your email:</label>
-                  <input type="text" name="youremail" /><br />
+
+                  <label for="title">Please enter a title:</label>
+                  <input type="text" name="title" /><br />
+
+                  <label for="city">Please enter the city:</label>
+                  <input type="text" name="city" /><br />
+
+                  <label for="category1">Please enter category1:</label>
+                  <input type="text" name="category1" /><br />
+
+
+                  <label for="category2">Please enter category2:</label>
+                  <input type="text" name="category2" /><br />
+
+                  <label for="description">Please enter a description:</label>
+                  <input type="text" name="description" /><br />
+
+
                   <input type="submit" />
                 </form>
             </div>
