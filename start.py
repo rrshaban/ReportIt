@@ -48,6 +48,21 @@ def working():
 	return workin
 
 
+@app.route('/submit', methods = ['POST'])
+def submit():
+	if request.method == 'POST':
+		name = request.form['yourname']
+		email= request.form['youremail']
+		return render_template('form_action.html', 
+					name=name, 
+					email=email)
+
+@app.route('/form')
+def form():
+	return render_template('form_submit.html')
+
+
+
 @app.route('/country/<country>')
 def print_country_region(country):
 	return render_template('hello.html', name = country)
@@ -66,6 +81,8 @@ def show_post(post_id):
 # 	print url_for('home')
 # 	print url_for('login', next = '/')
 # 	print url_for('print_country_region', country = 'Jordan')
+		# url_for('static', filename='style.css')
+		#  this has to be in folder static
 
 if __name__ == '__main__':
 	app.debug = True
