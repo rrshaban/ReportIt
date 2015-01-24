@@ -5,6 +5,8 @@
 <head>
   <title></title>
   <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  
   <script src="{{url_for('static',filename='js/gmaps.js')}}"></script>
   <style type="text/css">
     #map {
@@ -23,7 +25,9 @@
       disableDefaultUI: true
     });
 
-    
+
+    {% if auto %}
+
     GMaps.geolocate({
         success: function(position){
           var x = position.coords.latitude;
@@ -37,6 +41,43 @@
           // pass
         }
       });
+
+    {% endif %}
+
+
+
+    {% if city or country %}
+
+    GMaps.geocode({
+
+      {% if city and country %}
+
+      address: $('{{city}}, {{country}}').val(),
+
+      {% elif city %}
+
+      address: $('{{city}}').val(),
+
+      {% else %} {# country #}
+
+      address: $('{{country}}').val(),
+
+      {% endif %}
+
+
+      callback: function(results, status) {
+        if (status == 'OK') {
+          var latlng = results[0].geometry.location;
+          map.setCenter(latlng.lat(), latlng.lng());
+          map.addMarker({
+            lat: latlng.lat(),
+            lng: latlng.lng()
+          });
+        }
+      }
+    });
+
+    {% endif %}
 
 
 

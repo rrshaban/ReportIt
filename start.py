@@ -20,7 +20,7 @@ def login():
 
 @app.route('/working')
 def working():
-	return render_template('js-play.html')
+	return render_template('js-play.html', city='Paris')
 
 
 @app.route('/submit', methods = ['GET', 'POST'])
