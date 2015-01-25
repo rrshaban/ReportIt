@@ -23,22 +23,61 @@ def working():
 	return render_template('js-play.html') 
 
 
+######### SQLITE
+
+DATABASE = '/db/c.db'
+
+def get_db():
+	db = getattr(g, '_database', None)
+	if db is None:
+		db = g._database = connect_to_database()
+	return db
+
+@app.teardown_appcontext
+def close_connection(exception):
+	db = getattr(g, '_database', None)
+	if db is not None:
+		db.close()
+
+def init_db():
+	with app.app_content():
+		db = get_db()
+		with app.open_resource('schema.sql', mode='r') as f:
+			db.cursor().executescript(f.read())
+		db.commit()
+
+		
+
+
+
+########## FLASK RESPONDS TO PAGES
+
 @app.route('/submit', methods = ['GET', 'POST'])
 def submit():
 	if request.method == 'POST':
 
-		title = request.form['title']
-		city = request.form['city']
-		category1 = request.form['category1']
-		category2 = request.form['category2']
+		print request.form
+
+		email = request.form['email']
+		lat = request.form['lat']
+		lon = request.form['lon']
+		cat1 = request.form['cat1']
+		cat2 = request.form['cat2']
 		description = request.form['description']
+		# notify = request.form['notify']
+
+
+
+
 
 		return render_template('form_action.html', 
-					title=title, 
-					city=city,
-					category1=category1,
-					category2=category2,
-					description=description)
+					mail = email,
+					lat = lat,
+					lon = lon,
+					cat1 = cat1,
+					cat2 = cat2,
+					description = description
+					)
 
 	else:
 		return render_template('form_submit.html')
