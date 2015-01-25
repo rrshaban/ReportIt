@@ -102,7 +102,7 @@ def submit():
 		# city = request.form['city']
 		# country = request.form['country']
 		# pic_url = request.form['pic_url']
-		city = ""
+		city = "lululand"
 		country = ""
 		pic_url = ""
 
@@ -114,7 +114,7 @@ def submit():
 			cur = con.cursor()
 
 			cur.execute('''INSERT INTO complaints(lat,lon,email,cat1,cat2,description,notify,city,country,pic_url)
-                  VALUES(?,?,?,?)''', (lat,lon,email,cat1,cat2,description,notify,city,country,pic_url))
+                  VALUES(?,?,?,?,?,?,?,?,?,?)''', (lat,lon,email,cat1,cat2,description,notify,city,country,pic_url))
 
 
 		return render_template('form_action.html', 
