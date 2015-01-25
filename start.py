@@ -148,7 +148,7 @@ def submit_redirect(lat, lon):
 
 @app.route('/')
 def home():
-	return 'Welcome to %s!' % appname
+	return app.send_static_file('new/index.html')
 
 @app.route('/about')
 def about():
@@ -156,9 +156,9 @@ def about():
 	return app.send_static_file('new/about.html')
 
 
-@app.route('/login')
+@app.route('/dashboard')
 def login():
-	return 'login'
+	return app.send_static_file('dashboard/index.html')
 
 @app.route('/working')
 def working():
