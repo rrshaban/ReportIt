@@ -181,7 +181,8 @@ def print_country_region(country):
 
 
 	return render_template('country.html', 
-		rows=rows
+		rows=rows,
+		country=country
 		)
 	# return render_template('hello.html', name = country)
 
