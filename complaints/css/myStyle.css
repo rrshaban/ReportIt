@@ -4,16 +4,37 @@
 }
 
 .navbar-inner{
-    background-color:grey;
+    
 }
 .navbar-inverse .navbar-brand{
     color:white;
+    font-size:17px;
+    font-weight:800;
+    leter-spacing:1px;
+    line-height: 20px;
+    position: relative;
+    display:block;
+    text-decoration:none;
+    background-color:transparent;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+
+
 }
 .navbar-inverse .navbar-brand:hover{
     text-shadow: 2px 2px black;
 }
 .navbar-inverse .navbar-nav>li>a{
     color:white;
+    font-size:15px;
+    font-weight:800;
+    leter-spacing:1px;
+    line-height: 20px;
+    position: relative;
+    display:block;
+    text-decoration:none;
+    background-color:transparent;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+
 }
 .navbar-inverse .navbar-nav>li>a:hover{
     text-shadow: 2px 2px black;
