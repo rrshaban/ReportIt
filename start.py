@@ -160,7 +160,7 @@ def submit_redirect(lat, lon):
 @app.route('/test')
 def index():
 
-	return render_template('index.html')
+	return render_template('about.html')
 
 
 
