@@ -1,28 +1,12 @@
 import sqlite3 as lite
 import sys
+import os
 from flask import *
 from contextlib import closing
 app = Flask(__name__, template_folder='templates')
 
 appname = 'ReportIt'
 DATABASE = 'db/c.db'
-
-@app.route('/')
-def home():
-	return 'Welcome to %s!' % appname
-
-@app.route('/about')
-def about():
-	return render_template('about.html')
-
-@app.route('/login')
-def login():
-	return 'login'
-
-@app.route('/working')
-def working():
-	return render_template('js-play.html') 
-
 
 ######### SQLITE
 
@@ -157,10 +141,35 @@ def submit_redirect(lat, lon):
 			lon = lon)
 
 
+
+
+
+
+
+@app.route('/')
+def home():
+	return 'Welcome to %s!' % appname
+
+@app.route('/about')
+def about():
+
+	return app.send_static_file('new/about.html')
+
+
+@app.route('/login')
+def login():
+	return 'login'
+
+@app.route('/working')
+def working():
+	return render_template('js-play.html') 
+
+
+
 @app.route('/test')
 def index():
 
-	return render_template('about.html')
+	return render_template('map.html')
 
 
 
