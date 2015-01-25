@@ -119,9 +119,11 @@ def submit():
 		if lat and lon:
 			return render_template('form_submit.html',
 				lat = lat,
-				lon = lon)
+				lon = lon,
+				auto = True)
 		else:
-			return render_template('form_submit.html')
+			return render_template('form_submit.html',
+				auto = False)
 
 @app.route('/submit/<lat>/<lon>')
 def submit_redirect(lat, lon):
@@ -177,7 +179,7 @@ def print_country_region(country):
 
 	with con:
 		cur = con.cursor()
-		cur.execute("SELECT * FROM complaints WHERE country = :country",
+		cur.execute("SELECT * FROM complaints WHERE country = :country AND lat NOT IN ('1.0', 1.0)",
 			{"country": country})
 		con.commit()
 

@@ -22,7 +22,7 @@
       lat: 31.9333,
       lng: 35.9333,
       disableDefaultUI: true,
-      zoom: 8
+      zoom: 4
     });
 
     {% if city or country %}
@@ -57,7 +57,7 @@
 
     {% endif %}
 
-    {% for row in rows if lat and lng%}
+    {% for row in rows %}
     map.addMarker({
     	lat: {{ row[1] }},
     	lng: {{ row[2] }},
@@ -71,7 +71,7 @@
 
 
 
-    
+
     GMaps.on('rightclick', map.map, function(event) {
             var lat = event.latLng.lat();
             var lng = event.latLng.lng();

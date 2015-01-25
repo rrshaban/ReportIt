@@ -1,21 +1,157 @@
 <html>
     <head>
-        <title>Handle POST requests with Flask</title>
-        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+        <title>Submit a complaint</title>
+        <!-- <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}"> -->
+
+
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script src="{{url_for('static',filename='new/js/gmaps.js')}}"></script>
+
+
+    <style type="text/css">
+        #map {
+            width: 50%;
+            height: 50%;
+        }
+    </style>
+
+
     </head>
     <body>
         <div id="container">
             <div class="title">
-                <h1>POST request with Flask</h1>
+                <h1>Submit a complaint</h1>
             </div>
             <div id="content">
 
 
             <form method="post" action="{{ url_for('submit') }}">
               <div class="Center">
+
+              <div id ="map"></div>
+
+              {% if lat and lon %}
+
+              <input type="hidden" id = "lat" name="lat" value="{{lat}}" />
+              <input type="hidden" id = "lon" name="lon" value="{{lon}}" />
+
+              {% else %}
+
+              <input type="hidden" id = "lat" name="lat" value="1" />
+              <input type="hidden" id = "lon" name="lon" value="1" />
+
+              {% endif %}
+
+
+                <script>
+                var map;
+
+                var map = new GMaps({
+                  el: '#map',
+                  lat: 5.5500,
+                  lng: 0.2000,
+                  disableDefaultUI: true,
+                  zoom: 8
+                });
+
+
+                {#% if auto %#}
+
+                GMaps.geolocate({
+                    success: function(position){
+                      var x = position.coords.latitude;
+                      var y = position.coords.longitude;
+                      map.setCenter(x, y);
+                      map.setZoom(10)
+                    },
+                    error: function(error){
+                      alert('Geolocation failed: '+error.message);
+                    },
+                    always: function(){
+                      // pass
+                    }
+                  });
+
+                {#% endif %#}
+
+
+
+
+                GMaps.on('click', map.map, function(event) {
+                        var lat = event.latLng.lat();
+                        var lng = event.latLng.lng();
+
+                        console.log(lat)
+                        console.log(lng)
+
+                        //  set hidden values
+                        document.getElementById("lat").value = lat;
+                        document.getElementById("lon").value = lng;
+
+
+
+                        var template = '<a href="{{ url_for("submit") }}?lat=' + lat+'&lon='+lng+'">Submit a complaint!</a>';
+
+
+                        // var content = template.replace(/{{lat}}/g, lat).replace(/{{lng}}/g, lng);
+
+                        console.log(template);
+                        map.addMarker({
+                          lat: lat,
+                          lng: lng,
+                          title: 'Potential Submission',
+                          infoWindow: {
+                            content : template
+                          }            
+                        });
+
+                        //  set hidden values
+                        document.getElementById("lat").value = lat;
+                        document.getElementById("lon").value = lng;
+
+
+
+                });
+
+                </script>
+
+
+
+                <!-- <div class="btn-group">
+                <div class="dropdown" text-align:center align="center">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">ReportIt
+                  <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Your Home</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Noise</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Vehicles and Parking</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Transportation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Streets and Sidewalks</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Public Health/Safety</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Disaster Relief</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Other</a></li>
+                    </ul>
+                </div>
+            </div> -->
+
+
+
+
+              <div class="form-group">
+                <input type="city" name="city" placeholder="City"><br>
+                <input type="country" name="country" placeholder="Country"><br>
+            </div>
+
+
+
           
               <div class="form-group">
                 <input type="text" name="email" placeholder="Enter email">
+                <label>
+                  <br /><input type="checkbox" name="notify"> Keep me updated
+                </label>
               </div>
 
               </div>
@@ -25,22 +161,14 @@
               
 
               <div class="form-group">
-                <label name="picture">Upload a Picture of the Problem (Optional)</label>
-                <input type="file" id="uploadPicture">
+                <label name="picture">Upload a Picture of the Problem <br /></label>
+                <!-- <input type="file" id="uploadPicture"> -->
+                <input type="text" name="pic_url" placeholder="Picture URL">
+                
               </div>
 
-              <div class="form-group">
-                <label>
-                  <input type="checkbox" name="notify"> Notify me when there are updates to this complaints
-                </label>
-                <br />
-              </div>
-
-                <input type="hidden" name="lat" value="{% if lat %}{{lat}}{% endif %}" />
-                <input type="hidden" name="lon" value="{% if lon %}{{lon}}{% endif %}" />
-
-                <input type="hidden" name="cat1" value="cat1" />
-                <input type="hidden" name="cat2" value="cat2" />
+                <input type="text" name="cat1" value="cat1" placeholder="Category 1"/>
+                <input type="text" name="cat2" value="cat2" placeholder="Category 2"/>
 
                 <button type="submit" class="btn btn-default">Submit</button>
 
