@@ -97,14 +97,15 @@ def submit():
 		cat1 = request.form['cat1']
 		cat2 = request.form['cat2']
 		description = request.form['description']
-		# notify = request.form['notify']
-		notify = False
+		notify = request.form['notify']
+		# notify = False
 		# city = request.form['city']
 		# country = request.form['country']
 		# pic_url = request.form['pic_url']
-		city = "lululand"
+		city = ""
 		country = ""
 		pic_url = ""
+
 
 
 		con = lite.connect(DATABASE)
@@ -127,7 +128,16 @@ def submit():
 					)
 
 	else:
-		return render_template('form_submit.html')
+
+		lat = request.args.get('lat', False)
+		lon = request.args.get('lon', False)
+
+		if lat and lon:
+			return render_template('form_submit.html',
+				lat = lat,
+				lon = lon)
+		else:
+			return render_template('form_submit.html')
 
 @app.route('/submit/<lat>/<lon>')
 def submit_redirect(lat, lon):
@@ -147,8 +157,21 @@ def index():
 
 @app.route('/country/<country>')
 def print_country_region(country):
-	return render_template('js-play.html', 
-		country=country
+
+	country = country
+	con = lite.connect(DATABASE)
+
+	with con:
+		cur = con.cursor()
+		cur.execute("SELECT * FROM complaints WHERE country = :country",
+			{"country": country})
+		con.commit()
+
+		rows = cur.fetchall()
+
+
+	return render_template('country.html', 
+		rows=rows
 		)
 	# return render_template('hello.html', name = country)
 

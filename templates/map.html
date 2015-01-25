@@ -72,15 +72,19 @@
             var lat = event.latLng.lat();
             var lng = event.latLng.lng();
 
-            var template = '<a href="{{ url_for("submit") }}/lat/lng/">Submit a complaint!</a>';
-            var content = template.replace(/{{lat}}/g, lat).replace(/{{lng}}/g, lon);
 
+            var template = '<a href="{{ url_for("submit") }}?lat=' + lat+'&lon='+lng+'">Submit a complaint!</a>';
+
+
+            // var content = template.replace(/{{lat}}/g, lat).replace(/{{lng}}/g, lng);
+
+            console.log(template);
             map.addMarker({
               lat: lat,
               lng: lng,
               title: 'Potential Submission',
               infoWindow: {
-                content : content
+                content : template
               }            
             });
 
