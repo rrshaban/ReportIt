@@ -84,22 +84,12 @@ def submit():
 		description = request.form['description']
 		# notify = request.form['notify']
 		notify = False
-		# city = request.form['city']
-		# country = request.form['country']
-		# pic_url = request.form['pic_url']
-		city = ""
-		country = ""
-		pic_url = ""
-
-
-		return render_template('form_action.html', 
-					mail = email,
-					lat = lat,
-					lon = lon,
-					cat1 = cat1,
-					cat2 = cat2,
-					description = description
-					)
+		city = request.form['city']
+		country = request.form['country']
+		pic_url = request.form['pic_url']
+		# city = ""
+		# country = ""
+		# pic_url = ""
 
 
 		con = lite.connect(DATABASE)
@@ -153,12 +143,17 @@ def home():
 @app.route('/about')
 def about():
 
-	return app.send_static_file('new/about.html')
+	return render_template('about.html')
+
+@app.route('/complaint')
+def complaint():
+
+	return render_template('complaint.html')
 
 
 @app.route('/dashboard')
-def login():
-	return app.send_static_file('dashboard/index.html')
+def dashboard():
+	return render_template('dashboard.html')
 
 @app.route('/working')
 def working():
