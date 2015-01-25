@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>About</title>
+    <title>Make a Complaint</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -90,16 +90,16 @@
 <form>
       <section>
         <div class="container" align="center">
-            <h2>Tell us About It</h2>
+            <h2>Where is it?</h2>
             <div class="form-group">
                 <input type="city" class="form-control" id="city" placeholder="City"><br>
-                <input type="country" class="form-control" id="country" placeholder="Country">
+                <input type="country" class="form-control" id="country" placeholder="Country"><br>
             </div>
             <h3>Find the location of the issue on the map</h3>
             <img src="fakeGmaps.jpg" width=50% height=50% align="center">
             <h3>Or, enter an address:</h3>
             <div class="form-group">
-                <input type="address" class="form-control" id="address" placeholder="Address of Problem">
+                <input type="address" class="form-control" id="address" placeholder="Address of Problem"><br>
             </div>
         </div>
       </section>
@@ -107,38 +107,42 @@
       <section>
         <div class="container" align="center">
             <h3>Get help with:</h3>
-            <div class="dropdown" text-align:center align="center">
-                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">ReportIt
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Your Home</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Noise</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Vehicles and Parking</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Transportation</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Streets and Sidewalks</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Public Health/Safety</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Disaster Relief</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Other</a></li>
-                </ul>
-            </div>
             
+            <div class="btn-group">
+                <div class="dropdown" text-align:center align="center">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">ReportIt
+                  <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Your Home</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Noise</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Vehicles and Parking</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Transportation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Streets and Sidewalks</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Public Health/Safety</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Disaster Relief</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Other</a></li>
+                    </ul>
+                </div>
+            </div>
+
             <h3>Specifically:</h3>
        
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="menu2" data-toggle="dropdown">Select one...
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
-                </ul>
+            <div class="btn-group">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="menu2" data-toggle="dropdown">Select one...
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                    </ul><br>
+                </div>
             </div>
-            
         </div> 
       </section>
     
@@ -179,9 +183,9 @@
             </label>
         </div>
       </section>    
-    
-    <button type="submit" class="btn btn-default submitButton" align="center">Submit</button>
-    
+    <div class="centered" align="centered">
+        <button type="submit" class="btn btn-default submitButton">Submit</button>
+    </div>
     </form>
 
     <!-- Footer -->
@@ -215,7 +219,7 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
+                    <p class="copyright text-muted">Copyright &copy; ReportIt 2015</p>
                 </div>
             </div>
         </div>
