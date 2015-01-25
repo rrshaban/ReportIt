@@ -5,7 +5,6 @@ from contextlib import closing
 app = Flask(__name__, template_folder='templates')
 
 appname = 'ReportIt'
-
 DATABASE = 'db/c.db'
 
 @app.route('/')
@@ -99,9 +98,23 @@ def submit():
 		cat2 = request.form['cat2']
 		description = request.form['description']
 		# notify = request.form['notify']
+		notify = False
+		# city = request.form['city']
+		# country = request.form['country']
+		# pic_url = request.form['pic_url']
+		city = ""
+		country = ""
+		pic_url = ""
 
 
+		con = lite.connect(DATABASE)
 
+		with con:
+
+			cur = con.cursor()
+
+			cur.execute('''INSERT INTO complaints(lat,lon,email,cat1,cat2,description,notify,city,country,pic_url)
+                  VALUES(?,?,?,?)''', (lat,lon,email,cat1,cat2,description,notify,city,country,pic_url))
 
 
 		return render_template('form_action.html', 
