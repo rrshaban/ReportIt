@@ -138,7 +138,7 @@ def submit_redirect(lat, lon):
 
 @app.route('/')
 def home():
-	return app.send_static_file('new/index.html')
+	return render_template('country.html')
 
 @app.route('/about')
 def about():
@@ -148,7 +148,7 @@ def about():
 @app.route('/complaint')
 def complaint():
 
-	return render_template('complaint.html')
+	return render_template('complaint_.html')
 
 
 @app.route('/dashboard')

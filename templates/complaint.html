@@ -12,10 +12,10 @@
     <title>Make a Complaint</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='new/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../static/css/clean-blog.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='new/css/clean-blog.min.css') }}" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -28,6 +28,20 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script src="{{url_for('static',filename='new/js/gmaps.js')}}"></script>
+
+
+    <style type="text/css">
+        #map {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
 
 </head>
 
@@ -74,7 +88,7 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/about-bg.jpg')">
+    <header class="intro-header" style="background-image: url('{{ url_for('static', filename='new/img/about-bg.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -94,14 +108,91 @@
         <div class="container" align="center">
             <h2>Where is it?</h2>
             <div class="form-group">
-                <input type="city" class="form-control" name="city" placeholder="City"><br>
-                <input type="country" class="form-control" name="country" placeholder="Country"><br>
+                <input type="city" name="city" placeholder="City"><br>
+                <input type="country" name="country" placeholder="Country"><br>
             </div>
 
             <h3>Right-click the location of the issue on the map</h3>
             <div id ="map"></div>
-            <img src="fakeGmaps.jpg" width=50% height=50% align="center">
-            
+
+
+
+
+
+
+            <script>
+    var map;
+
+    var map = new GMaps({
+      el: '#map',
+      lat: 31.9333,
+      lng: 35.9333,
+      disableDefaultUI: true,
+      zoom: 8
+    });
+
+
+    {#% if auto %#}
+
+    GMaps.geolocate({
+        success: function(position){
+          var x = position.coords.latitude;
+          var y = position.coords.longitude;
+          map.setCenter(x, y);
+          map.setZoom(10)
+        },
+        error: function(error){
+          alert('Geolocation failed: '+error.message);
+        },
+        always: function(){
+          // pass
+        }
+      });
+
+    {#% endif %#}
+
+
+
+
+    GMaps.on('rightclick', map.map, function(event) {
+            var lat = event.latLng.lat();
+            var lng = event.latLng.lng();
+
+
+            var template = '<a href="{{ url_for("submit") }}?lat=' + lat+'&lon='+lng+'">Submit a complaint!</a>';
+
+
+            // var content = template.replace(/{{lat}}/g, lat).replace(/{{lng}}/g, lng);
+
+            console.log(template);
+            map.addMarker({
+              lat: lat,
+              lng: lng,
+              title: 'Potential Submission',
+              infoWindow: {
+                content : template
+              }            
+            });
+
+            //  set hidden values
+            document.getElementById("lat").value = lat;
+            document.getElementById("lon").value = lng;
+
+
+
+    });
+
+
+
+  </script>
+
+
+
+
+
+
+
+
         </div>
       </section>
     
@@ -151,7 +242,7 @@
         <div class="container" align="center">
             <h3>Tell us about it</h3>
             <div class="form-group">
-                <textarea class="form-control" rows="7" name="description" placeholder="Description of problem"></textarea>
+                <textarea rows="7" name="description" placeholder="Description of problem"></textarea>
             </div>
         </div> 
       </section>    
@@ -164,7 +255,7 @@
                <p class="help-block" align="center">Pictures allow problems to be identified and fixed quicker. Upload a picture from your computer or include the URL.</p>
                 <input type="file" id="uploadPicture"> <br>
                 <label for="picURL">Or enter picture URL</label>
-                <input type="URL" class="form-control" name="pic_url" placeholder="Enter picture URL">
+                <input type="URL" name="pic_url" placeholder="Enter picture URL">
 
             </div>
         </div> 
@@ -175,7 +266,7 @@
             <h3>Keep in touch!</h3>
             <div class="form-group">
                 <label for="userEmail">Enter Email</label>
-                <input type="email" class="form-control" name="email" placeholder="Enter email">
+                <input type="email" name="email" placeholder="Enter email">
             </div>
         </div>
         <div class="checkbox" align="center">
@@ -193,7 +284,9 @@
 
 
     <div class="centered" align="centered">
-        <button type="submit" class="btn btn-default submitButton">Submit</button>
+        <button type="submit">Submit</button>
+
+        
     </div>
     </form>
 
@@ -235,13 +328,15 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="{{ url_for('static', filename='new/js/jquery.js') }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='new/js/bootstrap.min.js') }}"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/clean-blog.min.js"></script>
+    <script src="{{ url_for('static', filename='new/js/clean-blog.min.js') }}"></script>
+
+
 
 </body>
 
