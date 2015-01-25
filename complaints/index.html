@@ -14,6 +14,7 @@
     <!-- Custom CSS -->
     <link href="css/full-width-pics.css" rel="stylesheet">
     <link href="css/myStyle.css" rel="stylesheet">
+    
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -24,6 +25,7 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <a class="brand" href="index.html"> <img src="rep_transparent.png" width="85.4" height="57.4"></a>
 	<div class="navbar-inner">
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -35,7 +37,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">Home</a>
-		        <a class="brand" href="index.html"> <img src="rep_transparent.png" width="42.7" height="28.7"></a>
+		        
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -68,16 +70,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="section-heading">Submit a Complaint</h1>
-<<<<<<< HEAD
-                    <p class="lead section-lead">Let your problem be heard.</p>
-=======
-                    <p class="lead section-lead">Let your voice be heard.</p>
->>>>>>> origin/master
+                    <p class="lead section-lead">Let your voice be heard</p>
+
                 </div>
             </div>
         </div>
     </section>
-<<<<<<< HEAD
     
     <form>
       <section>
@@ -98,7 +96,38 @@
     
       <section>
         <div class="container" align="center">
-            <h3>Nature of Complaint:</h3>
+            <h3>Get help with:</h3>
+            <div class="dropdown" text-align:center align="center">
+                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">ReportIt
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Your Home</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Noise</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Vehicles and Parking</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Transportation</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Streets and Sidewalks</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Public Health/Safety</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Disaster Relief</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Other</a></li>
+                </ul>
+            </div>
+            
+            <h3>Specifically:</h3>
+       
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="menu2" data-toggle="dropdown">Select one...
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                </ul>
+            </div>
             
         </div> 
       </section>
@@ -138,7 +167,7 @@
         </div>
       </section>    
     
-    <button type="submit" class="btn btn-default" align="center">Submit</button>
+    <button type="submit" class="btn btn-default submitButton" align="center">Submit</button>
     
     </form>
 
@@ -147,9 +176,7 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; ReportIt 2015</p>
-                </div>
+                <p>Copyright &copy; ReportIt 2015</p>
             </div>
             <!-- /.row -->
         </div>
@@ -161,6 +188,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 </body>
 
