@@ -23,22 +23,35 @@ def working():
 	return render_template('js-play.html') 
 
 
+DATABASE = '/c.db'
+
+
 @app.route('/submit', methods = ['GET', 'POST'])
 def submit():
 	if request.method == 'POST':
 
-		title = request.form['title']
-		city = request.form['city']
-		category1 = request.form['category1']
-		category2 = request.form['category2']
+		print request.form
+
+		email = request.form['email']
+		lat = request.form['lat']
+		lon = request.form['lon']
+		cat1 = request.form['cat1']
+		cat2 = request.form['cat2']
 		description = request.form['description']
+		# notify = request.form['notify']
+
+
+
+
 
 		return render_template('form_action.html', 
-					title=title, 
-					city=city,
-					category1=category1,
-					category2=category2,
-					description=description)
+					mail = email,
+					lat = lat,
+					lon = lon,
+					cat1 = cat1,
+					cat2 = cat2,
+					description = description
+					)
 
 	else:
 		return render_template('form_submit.html')
