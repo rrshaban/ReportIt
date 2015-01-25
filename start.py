@@ -87,9 +87,10 @@ def query_db(query, args=(), one=False):
 
 @app.route('/submit', methods = ['GET', 'POST'])
 def submit():
-	if request.method == 'POST':
+	
+	print (request.method, request.form)
 
-		print request.form
+	if request.method == 'POST':
 
 		email = request.form['email']
 		lat = request.form['lat']
@@ -97,8 +98,8 @@ def submit():
 		cat1 = request.form['cat1']
 		cat2 = request.form['cat2']
 		description = request.form['description']
-		notify = request.form['notify']
-		# notify = False
+		# notify = request.form['notify']
+		notify = False
 		# city = request.form['city']
 		# country = request.form['country']
 		# pic_url = request.form['pic_url']
@@ -106,6 +107,15 @@ def submit():
 		country = ""
 		pic_url = ""
 
+
+		return render_template('form_action.html', 
+					mail = email,
+					lat = lat,
+					lon = lon,
+					cat1 = cat1,
+					cat2 = cat2,
+					description = description
+					)
 
 
 		con = lite.connect(DATABASE)
@@ -171,7 +181,8 @@ def print_country_region(country):
 
 
 	return render_template('country.html', 
-		rows=rows
+		rows=rows,
+		country=country
 		)
 	# return render_template('hello.html', name = country)
 

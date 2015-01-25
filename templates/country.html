@@ -1,3 +1,93 @@
+
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="{{url_for('static',filename='js/gmaps.js')}}"></script>
+
+
+<style type="text/css">
+    #map {
+        width: 100%;
+        height: 400px;
+    }
+</style>
+<div id="map"></div>
+
+<script>
+
+	var map;
+
+    var map = new GMaps({
+      el: '#map',
+      lat: 31.9333,
+      lng: 35.9333,
+      disableDefaultUI: true,
+      zoom: 8
+    });
+
+    {% if city or country %}
+
+
+    GMaps.geocode({
+      {% if city and country %}
+      address: '{{city}}, {{country}}',
+      {% elif city %}
+      address: '{{city}}',
+      {% else %} {# country #}
+      address: '{{country}}',
+      {% endif %}
+
+
+      callback: function(results, status) {
+        if (status == 'OK') {
+          var latlng = results[0].geometry.location;
+          map.setCenter(latlng.lat(), latlng.lng());
+          {% if city %}
+          map.setZoom(9);
+          {% endif %}
+          // map.addMarker({
+          //   lat: latlng.lat(),
+          //   lng: latlng.lng()
+          // });
+
+
+        }
+      }
+    });
+
+    {% endif %}
+
+    {% for row in rows %}
+    map.addMarter({
+    	lat: {{ row[1] }},
+    	lng: {{ row[2] }},
+    	title: {{ row[4] }},
+    	infoWindow: {
+    		content : {{ row[4] }}+', '+{{ row[5] }}
+    	}
+    });
+
+    {% endfor %}
+
+    // map.addMarker({
+    //   lat: lat,
+    //   lng: lng,
+    //   title: 'Potential Submission',
+    //   infoWindow: {
+    //     content : template
+    //   }            
+    // });
+
+</script>
+
+
+{% for row in rows %}
+	<li>{{ row[0] }}</li>
+{% else %}
+	<li>No posts found. Be the first to ReportIt!</li>
+{% endfor %}
+
+
 {% for row in rows %}
 	<li>{{ row }}</li>
 {% endfor %}
