@@ -18,14 +18,16 @@ body {
 }
 
 .image-bg-fluid-height {
-	background: url('https://creativeblog22.files.wordpress.com/2010/11/city-scape-1.jpg');
+    width: 100%;
+    height: 400px;
     padding: 100px 0;
 }
 
 .image-bg-fixed-height {
-	background: url('city-scape-2.jpg');
-	background-repeat: no-repeat;
-    height: 350px;
+	background: url('http://lorempixel.com/g/1920/500/') no-repeat center center scroll;
+    height: 450px;
+    padding: 100px 0;
+}
 
 .img-center {
 	margin: 0 auto;

@@ -1,0 +1,94 @@
+<div id="map"></div>
+
+  <script>
+    var map;
+
+    var map = new GMaps({
+      el: '#map',
+      lat: 31.9333,
+      lng: 35.9333,
+      disableDefaultUI: true,
+      zoom: 5
+    });
+
+
+    {% if auto %}
+
+    GMaps.geolocate({
+        success: function(position){
+          var x = position.coords.latitude;
+          var y = position.coords.longitude;
+          map.setCenter(x, y);
+        },
+        error: function(error){
+          alert('Geolocation failed: '+error.message);
+        },
+        always: function(){
+          // pass
+        }
+      });
+
+    {% endif %}
+
+    {% if city or country %}
+
+    GMaps.geocode({
+      {% if city and country %}
+      address: '{{city}}, {{country}}',
+      {% elif city %}
+      address: '{{city}}',
+      {% else %} {# country #}
+      address: '{{country}}',
+      {% endif %}
+
+
+      callback: function(results, status) {
+        if (status == 'OK') {
+          var latlng = results[0].geometry.location;
+          map.setCenter(latlng.lat(), latlng.lng());
+          {% if city %}
+          map.setZoom(9);
+          {% endif %}
+          // map.addMarker({
+          //   lat: latlng.lat(),
+          //   lng: latlng.lng()
+          // });
+        }
+      }
+    });
+
+    {% endif %}
+
+
+
+    GMaps.on('click', map.map, function(event) {
+            var lat = event.latLng.lat();
+            var lng = event.latLng.lng();
+
+            var content = 'Would you like to submit a complaint?<br /><a href="{{ url_for("submit") }}">Yes!</a>';
+            //var content = template.replace(/{{index}}/g, index).replace(/{{lat}}/g, lat).replace(/{{lng}}/g, lng);
+
+            map.addMarker({
+              lat: lat,
+              lng: lng,
+              title: 'Potential Submission',
+              infoWindow: {
+                content : content
+              }            
+            });
+
+
+            
+
+          });
+
+
+
+
+
+    
+  
+
+
+
+  </script>

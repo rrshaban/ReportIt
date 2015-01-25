@@ -11,11 +11,17 @@
 
     <title>Submit a Complaint</title>
 
+    <!-- Custom CSS -->
+    <link href="css/myStyle.css" rel="stylesheet">
+    <link href="css/full-width-pics.css" rel="stylesheet">    
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/full-width-pics.css" rel="stylesheet">
 
 </head>
 
@@ -23,12 +29,11 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <a class="brand" href="index.html"> <img src="rep_transparent.png" width="85.4" height="57.4"></a>
 	<div class="navbar-inner">
           <div class="container">
-
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-		<a class="brand" href="index.html"> <img src="rep_transparent.png" width="42.7" height="28.7"></a>
+            <div class="navbar-header">		
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -36,12 +41,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">Home</a>
+		        
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <a href="../about/about.html">About</a>
                     </li>
                     <li>
                         <a href="#">My neighborhood</a>
@@ -55,12 +61,11 @@
           </div>
 	</div>
         <!-- /.container -->
+
     </nav>
 
-    <!-- Full Width Image Header with Logo -->
-    <!-- Image backgrounds are set within the full-width-pics.css file. -->
-    <header class="image-bg-fluid-height">
-        <img class="img-responsive img-center" src="rep.png" alt="">
+    <aside class="image-bg-fixed-height"></aside>
+
     </header>
 
     <!-- Content Section -->
@@ -69,39 +74,113 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="section-heading">Submit a Complaint</h1>
-                    <p class="lead section-lead">Let your problem be heard.</p>
-                    <p class="section-paragraph">Please fill out the following form.</p>
+                    <p class="lead section-lead">Let your voice be heard</p>
+
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Fixed Height Image Aside -->
-    <!-- Image backgrounds are set within the full-width-pics.css file. -->
-    <aside class="image-bg-fixed-height"></aside>
-
-    <!-- Content Section -->
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="section-heading">Section Heading</h1>
-                    <p class="lead section-lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
-                </div>
+    
+    <form>
+      <section>
+        <div class="container" align="center">
+            <h2>Tell us About It</h2>
+            <div class="form-group">
+                <input type="city" class="form-control" id="city" placeholder="City"><br>
+                <input type="country" class="form-control" id="country" placeholder="Country">
             </div>
-            <!-- /.row -->
+            <h3>Find the location of the issue on the map</h3>
+            <img src="fakeGmaps.jpg" width=50% height=50% align="center">
+            <h3>Or, enter an address:</h3>
+            <div class="form-group">
+                <input type="address" class="form-control" id="address" placeholder="Address of Problem">
+            </div>
         </div>
-        <!-- /.container -->
-    </section>
+      </section>
+    
+      <section>
+        <div class="container" align="center">
+            <h3>Get help with:</h3>
+            <div class="dropdown" text-align:center align="center">
+                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">ReportIt
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Your Home</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Noise</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Vehicles and Parking</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Transportation</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Streets and Sidewalks</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Public Health/Safety</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Disaster Relief</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Other</a></li>
+                </ul>
+            </div>
+            
+            <h3>Specifically:</h3>
+       
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="menu2" data-toggle="dropdown">Select one...
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">SOMETHING</a></li>
+                </ul>
+            </div>
+            
+        </div> 
+      </section>
+    
+      <section>
+        <div class="container" align="center">
+            <h3>Tell us about it</h3>
+            <div class="form-group">
+                <textarea class="form-control" rows="17" placeholder="Description of problem"></textarea>
+            </div>
+        </div> 
+      </section>    
+    
+      <section>
+        <div class="container" align="center">
+            <h3>Upload a picture (optional)</h3>
+            <div class="form-group">
+
+	           <p class="help-block">Pictures allow problems to be identified and fixed quicker.</p>
+                <input type="file" id="uploadPicture"> 
+            </div>
+        </div> 
+      </section>    
+    
+      <section>
+        <div class="container" align="center">
+            <h3>Keep in touch!</h3>
+            <div class="form-group">
+                <label for="userEmail">Enter Email</label>
+                <input type="email" class="form-control" id="userEmail" placeholder="Enter email">
+            </div>
+        </div>
+        <div class="checkbox" align="center">
+            <label>
+                <input type="checkbox"> Notify me when there are updates to this complaints
+            </label>
+        </div>
+      </section>    
+    
+    <button type="submit" class="btn btn-default submitButton" align="center">Submit</button>
+    
+    </form>
+
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
+                <p>Copyright &copy; ReportIt 2015</p>
             </div>
             <!-- /.row -->
         </div>
@@ -113,6 +192,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 </body>
 

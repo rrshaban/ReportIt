@@ -25,7 +25,7 @@ body {
 .image-bg-fixed-height {
 	background: url('city-scape-2.jpg');
 	background-repeat: no-repeat;
-    height: 350px;
+    height: 450px;
 
 .img-center {
 	margin: 0 auto;
