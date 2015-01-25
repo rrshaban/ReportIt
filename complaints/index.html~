@@ -16,7 +16,6 @@
 
     <!-- Custom CSS -->
     <link href="css/full-width-pics.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -25,9 +24,10 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="navbar-inner">
           <div class="container">
-            <a class="brand" href="index.html"> <img src="rep_transparent.png" width="42.7" height="28.7"></a>
+
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
+		<a class="brand" href="index.html"> <img src="rep_transparent.png" width="42.7" height="28.7"></a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -54,12 +54,11 @@
           </div>
 	</div>
         <!-- /.container -->
+
     </nav>
 
-    <!-- Full Width Image Header with Logo -->
-    <!-- Image backgrounds are set within the full-width-pics.css file. -->
-    <header class="image-bg-fluid-height">
-        <img class="img-responsive img-center" src="rep.png" alt="">
+    <aside class="image-bg-fixed-height"></aside>
+
     </header>
 
     <!-- Content Section -->
@@ -75,31 +74,40 @@
         </div>
     </section>
 
-    <!-- Fixed Height Image Aside -->
-    <!-- Image backgrounds are set within the full-width-pics.css file. -->
-    <aside class="image-bg-fixed-height"></aside>
+    <form>
+      <div class="form-group">
+        <label for="userEmail">Enter Email</label>
+        <input type="email" class="form-control" id="userEmail" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="address">Address of Problem</label>
+        <input type="password" class="form-control" id="address" placeholder="Address of Problem">
+      </div>
+      <div class="form-group">
+	<label for="description">Enter a description of the problem: </label>
+        <textarea class="form-control" rows="17" placeholder="Description"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFile">Upload a Picture of the Problem (Optional)</label>
+	<p class="help-block">The pictures allow problems to be identified and fixed quicker.</p>
+        <input type="file" id="uploadPicture">
+        
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Notify me when there are updates to this complaints
+        </label>
+      </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
 
-    <!-- Content Section -->
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="section-heading">Section Heading</h1>
-                    <p class="lead section-lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
-                </div>
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container -->
-    </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; ReportIt 2015</p>
                 </div>
             </div>
             <!-- /.row -->
