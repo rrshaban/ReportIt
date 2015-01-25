@@ -13,7 +13,7 @@ def home():
 
 @app.route('/about')
 def about():
-	return 'The about page.'
+	return render_template('about.html')
 
 @app.route('/login')
 def login():
@@ -177,4 +177,4 @@ def show_post(post_id):
 if __name__ == '__main__':
 	app.debug = True
 	# app.logger.warning('A warning occurred (%d apples)', 42)
-	app.run()
+	app.run(host='0.0.0.0')

@@ -1,3 +1,9 @@
+    <style type="text/css">
+        #map {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
 <div id="map"></div>
 
   <script>
@@ -8,17 +14,18 @@
       lat: 31.9333,
       lng: 35.9333,
       disableDefaultUI: true,
-      zoom: 5
+      zoom: 8
     });
 
 
-    {% if auto %}
+    {#% if auto %#}
 
     GMaps.geolocate({
         success: function(position){
           var x = position.coords.latitude;
           var y = position.coords.longitude;
           map.setCenter(x, y);
+          map.setZoom(10)
         },
         error: function(error){
           alert('Geolocation failed: '+error.message);
@@ -28,7 +35,7 @@
         }
       });
 
-    {% endif %}
+    {#% endif %#}
 
     {% if city or country %}
 
@@ -65,8 +72,8 @@
             var lat = event.latLng.lat();
             var lng = event.latLng.lng();
 
-            var content = 'Would you like to submit a complaint?<br /><a href="{{ url_for("submit") }}">Yes!</a>';
-            //var content = template.replace(/{{index}}/g, index).replace(/{{lat}}/g, lat).replace(/{{lng}}/g, lng);
+            var template = '<a href="{{ url_for("submit") }}/lat/lng/">Submit a complaint!</a>';
+            var content = template.replace(/{{lat}}/g, lat).replace(/{{lng}}/g, lon);
 
             map.addMarker({
               lat: lat,
@@ -78,16 +85,7 @@
             });
 
 
-            
-
           });
-
-
-
-
-
-    
-  
 
 
 
