@@ -140,12 +140,22 @@ def submit_redirect(lat, lon):
 
 @app.route('/')
 def home():
-	return render_template('country.html')
+	return render_template('index.html')
 
 @app.route('/about')
 def about():
 
 	return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+
+	return render_template('contact.html')
+
+@app.route('/map')
+def map():
+
+	return render_template('map.html')
 
 @app.route('/complaint')
 def complaint():
@@ -179,7 +189,7 @@ def print_country_region(country):
 
 	with con:
 		cur = con.cursor()
-		cur.execute("SELECT * FROM complaints WHERE country = :country AND lat NOT IN ('1.0', 1.0)",
+		cur.execute("SELECT * FROM complaints WHERE country = :country OR city = :country AND lat NOT IN ('1.0', 1.0)",
 			{"country": country})
 		con.commit()
 

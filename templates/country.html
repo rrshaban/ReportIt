@@ -22,7 +22,7 @@
       lat: 31.9333,
       lng: 35.9333,
       disableDefaultUI: true,
-      zoom: 4
+      zoom: 10
     });
 
     {% if city or country %}
@@ -43,7 +43,7 @@
           var latlng = results[0].geometry.location;
           map.setCenter(latlng.lat(), latlng.lng());
           {% if city %}
-          map.setZoom(9);
+          map.setZoom(10);
           {% endif %}
           // map.addMarker({
           //   lat: latlng.lat(),
@@ -61,9 +61,9 @@
     map.addMarker({
     	lat: {{ row[1] }},
     	lng: {{ row[2] }},
-    	title: {{ row[4] }},
+    	title: '{{ row[4] }}',
     	infoWindow: {
-    		content : {{ row[4] }}+', '+{{ row[5] }}
+    		content : "{{ row[4] }}, {{ row[5] }}"
     	}
     });
 
@@ -106,7 +106,7 @@
 
 </script>
 
-
+<!-- 
 {% for row in rows %}
 	<li>{{ row[0] }}</li>
 {% else %}
@@ -116,4 +116,4 @@
 
 {% for row in rows %}
 	<li>{{ row }}</li>
-{% endfor %}
+{% endfor %} -->

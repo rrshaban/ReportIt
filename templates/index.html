@@ -29,6 +29,12 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script src="{{url_for('static',filename='new/js/gmaps.js')}}"></script>
+
+
 </head>
 
 <body>
@@ -53,19 +59,19 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
-                        <a href="about.html">About</a>
+                        <a href="/about">About</a>
                     </li>
                     <li>
-                        <a href="trending.html">My neighborhood</a>
+                        <a href="/">My neighborhood</a>
                     </li>
                     <li>
-                        <a href="complaint.html">Submit a Complaint</a>
+                        <a href="/complaint">Submit a Complaint</a>
                     </li>
                     <li>
-                        <a href="dashboard.html">Dashboard</a>
+                        <a href="/dashboard">Dashboard</a>
                     </li>
                 </ul>
             </div>
@@ -84,8 +90,7 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
                         <h1>ReportIt</h1>
-                        <hr class="small">
-                        <span class="subheading">Crowdsourcing</span>
+
                     </div>
                 </div>
             </div>
@@ -95,6 +100,80 @@
     <!-- Main Content -->
     <div class="container">
         <div class="row">
+
+        <iframe
+  width=100%
+  height="400"
+  frameborder="0" style="border:0"
+  src="/country/Accra">
+</iframe>
+                                                <div id="map"></div>
+
+
+
+
+                                  <script>
+                                    var map;
+
+                                    var map = new GMaps({
+                                      el: '#map',
+                                      lat: 31.9333,
+                                      lng: 35.9333,
+                                      disableDefaultUI: true,
+                                      zoom: 8
+                                    });
+
+
+                                    {#% if auto %}
+
+                                    GMaps.geolocate({
+                                        success: function(position){
+                                          var x = position.coords.latitude;
+                                          var y = position.coords.longitude;
+                                          map.setCenter(x, y);
+                                          map.setZoom(10)
+                                        },
+                                        error: function(error){
+                                          alert('Geolocation failed: '+error.message);
+                                        },
+                                        always: function(){
+                                          // pass
+                                        }
+                                      });
+
+                                    {#% endif %#}
+
+
+
+
+                                    GMaps.on('rightclick', map.map, function(event) {
+                                            var lat = event.latLng.lat();
+                                            var lng = event.latLng.lng();
+
+
+                                            var template = '<a href="{{ url_for("submit") }}?lat=' + lat+'&lon='+lng+'">Submit a complaint!</a>';
+
+
+                                            // var content = template.replace(/{{lat}}/g, lat).replace(/{{lng}}/g, lng);
+
+                                            console.log(template);
+                                            map.addMarker({
+                                              lat: lat,
+                                              lng: lng,
+                                              title: 'Potential Submission',
+                                              infoWindow: {
+                                                content : template
+                                              }            
+                                            });
+
+
+                                    });
+
+
+
+                                  </script>
+
+        </div>
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-preview">
                     <a href="post.html">
