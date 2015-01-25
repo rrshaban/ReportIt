@@ -137,6 +137,12 @@ def submit_redirect(lat, lon):
 			lon = lon)
 
 
+@app.route('/test')
+def index():
+
+	return render_template('index.html')
+
+
 
 
 @app.route('/country/<country>')
