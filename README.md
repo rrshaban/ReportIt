@@ -1,2 +1,4 @@
 # ReportIt
-Working project folder for Haverford Hackathon 2015
+Working project folder for Trico Hackathon 2015
+
+http://rrshaban.github.io/ReportIt.
